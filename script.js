@@ -91,7 +91,7 @@ $(function () {
         movieGrid.appendChild(row);
 
         //there was error for movies.length; 
-        for (let i = 1; i < movies.length; i++) {
+        for (let i = 1; i <= movies.length; i++) {
             // every group of 4 gets their own class=row 
             if ((i % 4) === 0) {
                 

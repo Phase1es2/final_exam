@@ -29,7 +29,7 @@ $(function () {
         // keydown - backspace or delete processing only
         keydown: function (e) {
             var code = e.which;
-            console.log("KEYDOWN-key:" + code);
+            //    console.log("KEYDOWN-key:" + code);
         },
         // keypress - everything else processing
         keypress: function (e) {
@@ -38,6 +38,7 @@ $(function () {
                 let search_term = document.getElementById("search_term").value;
 
                 let search_api_url = getSearchUrl(search_term);
+
                 search_api_url = console.log(search_term);
                 $.ajax({
                     url: search_api_url,
@@ -47,7 +48,7 @@ $(function () {
                     cache: false
                 });
             }
-            console.log("KEYPRESS-key:" + code);
+            //  console.log("KEYPRESS-key:" + code);
         }
     });
     // ========================================================
@@ -58,8 +59,8 @@ $(function () {
     // Do the actual search in this function
     function api_search(e) {
         // get text value from the input field
+        // let search_term = "";
         let search_term = document.getElementById("search_term").value;
-        //let search_term = "";
         // prepare search string url => search_api_url
         let search_api_url = getSearchUrl(search_term);
         //search_api_url = console.log(search_term);
@@ -89,18 +90,19 @@ $(function () {
 
         movieGrid.appendChild(row);
 
-        for (let i = 0; i < movies.length; i++) {
+        //there was error for movies.length; 
+        for (let i = 1; i < movies.length; i++) {
             // every group of 4 gets their own class=row 
-            if (i % 4 === 0) {
+            if ((i % 4) === 0) {
                 // Create a new div element with the "row" class
                 row = document.createElement('div');
                 row.classList.add('row');
-
                 // Append the row to the container element
                 movieGrid.appendChild(row);
             }
             //utilize the movie_cell_template to append, then add data from
             // movie data results (parsed JSON)
+            // let movies = data.results;
             movie_cell_template = "<div class='col col-3 movie-cell'><div class='movie-poster'><img src='" + getPosterUrl(movies[i].poster_path) + "'></div><div class='movie-title'><h6> " + movies[i].original_title + "</h6> </div></div>";
 
             row.innerHTML += movie_cell_template;

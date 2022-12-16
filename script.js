@@ -94,6 +94,7 @@ $(function () {
         for (let i = 1; i < movies.length; i++) {
             // every group of 4 gets their own class=row 
             if ((i % 4) === 0) {
+                
                 // Create a new div element with the "row" class
                 row = document.createElement('div');
                 row.classList.add('row');
